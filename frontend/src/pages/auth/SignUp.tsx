@@ -18,7 +18,6 @@ import ConfirmPassword from "../../components/form/custom/CustomConfirmPassword"
 const SignUp: React.FC = () => {
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
 
-const [passwordEntered, setPasswordEntered] = useState<string>(""); 
 const methods = useForm();
 
   const handleOnClick = () => {
@@ -61,7 +60,6 @@ const methods = useForm();
       showErrorMessage(getValue(err, "message"));
     }
   };
-  console.log("password", passwordEntered);
   
 
   return (

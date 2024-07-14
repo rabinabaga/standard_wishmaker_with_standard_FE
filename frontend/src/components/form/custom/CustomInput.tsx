@@ -19,8 +19,7 @@ const CustomInput: React.FC<Props> = ({
   type,
   required,
   styles,
-  passwordMatch, 
-  passwordValue
+  
 }) => {
   const {
     register,
@@ -29,10 +28,6 @@ const CustomInput: React.FC<Props> = ({
     setValue,
   } = useFormContext();
 
-  if(name==="password" && passwordMatch){
-    const pass = watch("password");
-    passwordMatch(pass);
-  }
 
   useEffect(() => {
     if (defaultValue) {
@@ -58,20 +53,12 @@ const CustomInput: React.FC<Props> = ({
 
   return (
     <div>
-      {(name !== "confirmpassword") ? <>  <input
+      <input
         type={type}
         className={styles}
         placeholder={placeHolder}
         {...register(name, validationRules)}
-      /></> : <>  <input
-        type={type}
-        className={styles}
-        {...register("confirmpassword", {
-          required: "Confirm Password is required",
-          validate: value =>
-            value === passwordValue || "The passwords do not match"
-        })}
-      /></>}
+      />
       <div>
         {required && errors[name] && (
           <span className="text-red-500 text-sm">
