@@ -16,6 +16,7 @@ import {
   useForm,
 } from "react-hook-form";
 import CustomInput from "../../components/form/custom/CustomInput";
+import CustomLabel from "../../components/form/custom/CustomLabel";
 
 type Inputs = {
   email: string,
@@ -29,7 +30,7 @@ const Login: React.FC = () => {
   const methods = useForm();
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
   const { setIsLoggedIn } = useAuthContext();
-  const { errors } = methods.formState; 
+  const { errors } = methods.formState;
   // const { errors } = methods.formState;
   // const onSubmit: SubmitHandler<FieldValues> = data => console.log(data);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -38,10 +39,10 @@ const Login: React.FC = () => {
         email: data.email,
         password: data.password,
       };
-      
+
       const response = await loginAccount(resData);
       console.log("response", response);
-      
+
       // const refresh = getValue(response, "refresh");
       // const access = getValue(response, "access");
       // setCookie({
@@ -66,52 +67,55 @@ const Login: React.FC = () => {
       showErrorMessage(getValue(err, "message"));
     }
   };
-  const handleOnClick = ()=>{
+  const handleOnClick = () => {
     () => { methods.handleSubmit(onSubmit)() }
   }
 
   return (
-      <div className="h-screen w-screen flex justify-center items-center bg-gray-100">
-        <div className="border shadow-authBox border-primary-faded border-[0.1px] flex flex-col py-[60px] px-[55px] gap-5">
-          <p
-            className="font-bodonimodasc text-primary-900 text-center"
-            style={{ fontSize: "32px" }}
-          >
-            WishMaker
-          </p>
-          <p
-            style={{ fontSize: "31px" }}
-            className="font-bold py-15 text-center"
-          >
-            Sign In
-          </p>
-   
-          <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-5">
-              <CustomInput label="Email" type="email" name="email" required={true} placeHolder="Enter your Email"></CustomInput>
-              <CustomInput label="Password" type="password" name="password" required={true} placeHolder="Enter your Password"></CustomInput>
-              <p className="text-black-faded text-center">Forgot password?</p>
-              <Button title="Sign In" onClick={handleOnClick}>
+    <div className="flex flex-col gap-5">
+      <p
+        className="font-bodonimodasc text-primary-900 text-center"
+        style={{ fontSize: "32px" }}
+      >
+        WishMaker
+      </p>
+      <p
+        style={{ fontSize: "31px" }}
+        className="font-bold py-15 text-center"
+      >
+        Sign In
+      </p>
 
-              </Button>
-              </div>
-            </form>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-1">
+              <CustomLabel title="Email" />
+              <CustomInput styles="py-4 px-2 rounded w-[492px]" type="email" name="email" required={true} placeHolder="Enter your Email" />
+            </div>
 
-          </FormProvider>
-    
-          <p className="text-center"> Or</p>
-          <button className="w-full font-bold border border-black-faded border-2 py-3 rounded-lg">
-            Sign In With Google
-          </button>
+            <div className="flex flex-col gap-1">
+              <CustomLabel title="Password" />
+              <CustomInput styles="py-4 px-2 rounded w-[492px]" type="password" name="password" required={true} placeHolder="Enter your Password" />
+            </div>
 
-          <p className="text-center">
-            <span className="text-black-faded">Doesn't have an account?</span>{" "}
-            <span className="text-primary-base font-bold">Sign up now</span>
-          </p>
+            <p className="text-black-faded text-center">Forgot password?</p>
+            <Button title="Sign In" onClick={handleOnClick} />
+          </div>
+        </form>
 
-        </div>
-      </div>
+      </FormProvider>
+
+      <p className="text-center"> Or</p>
+      <button className="w-full font-bold border border-black-faded border-2 py-3 rounded-lg">
+        Sign In With Google
+      </button>
+
+      <p className="text-center">
+        <span className="text-black-faded">Doesn't have an account?</span>
+        <span className="text-primary-900 font-bold">Sign up now</span>
+      </p>
+    </div>
 
   );
 };

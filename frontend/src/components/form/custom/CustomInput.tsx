@@ -7,7 +7,7 @@ interface Props {
   placeHolder: string;
   type: string;
   required?: boolean;
-  label:string
+  styles: string
 }
 
 const CustomInput: React.FC<Props> = ({
@@ -16,7 +16,8 @@ const CustomInput: React.FC<Props> = ({
   placeHolder,
   type,
   required,
-  label
+  styles
+
 }) => {
   const {
     register,
@@ -46,21 +47,24 @@ const CustomInput: React.FC<Props> = ({
   }
 
   return (
-    <div className="flex flex-col gap-1">
-      <p>{label} </p>
+    <div>
       <input
         type={type}
-        className="py-4 px-2 rounded"
-        placeholder={placeHolder}        style={{ width: "492px" }}
+        className={styles}
+        placeholder={placeHolder}
         {...register(name, validationRules)}
       />
-      {required && errors[name] && (
-        <span className="text-red-500 text-sm">
-          {errors[name]?.message?.toString()}
-        </span>
-      )}
+      <div>
+        {required && errors[name] && (
+          <span className="text-red-500 text-sm">
+            {errors[name]?.message?.toString()}
+          </span>
+        )}
+      </div>
     </div>
-    
+
+
+
   );
 };
 
