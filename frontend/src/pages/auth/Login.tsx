@@ -80,14 +80,20 @@ const Login: React.FC = () => {
                 defaultValue="test"
                 {...methods.register("email")}
               />
+              <CustomInput 
+              defaultValue="testpass234"
+              name="password"
+              placeHolder="Enter your password"
+              type="password"
+              required={true}
+              ></CustomInput>
 
               {/* include validation with required or other standard HTML validation rules */}
-              <input
+              {/* <input
                 className="border-gray-200"
                 {...methods.register("password", { required: true })}
-              />
+              /> */}
               {/* errors will return when field validation fails */}
-              {errors.password && <span>This field is required</span>}
 
               <button type="submit">Sign In</button>
             </form>
