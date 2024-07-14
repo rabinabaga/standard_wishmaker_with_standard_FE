@@ -112,8 +112,12 @@ const Login: React.FC = () => {
       </button>
 
       <p className="text-center">
-        <span className="text-black-faded">Doesn't have an account?</span>
-        <span className="text-primary-900 font-bold">Sign up now</span>
+        <span className="text-black-faded">Don't have an account?</span>
+        <span className="text-primary-900 font-bold cursor-pointer">  <Link
+          to="/signup"
+        >
+          Sign Up Now
+        </Link></span>
       </p>
     </div>
 

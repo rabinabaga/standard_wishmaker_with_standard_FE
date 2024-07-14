@@ -7,6 +7,7 @@ import PrivateRouteWrapper from "./layout/PrivateRouteWrapper";
 import PublicRouteWrapper from "./layout/PublicRouteWrapper";
 import { PATH } from "./constants/path";
 import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
 // import { useAuthContext } from "./hooks/contextConsumer.hook";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           </Route>
           <Route element={<PublicRouteWrapper isLoggedIn={false} />}>
             <Route path={PATH.login} element={<Login />} />
+            <Route path={PATH.signup} element={<SignUp />} />
           </Route>
         </Routes>
       </BrowserRouter>

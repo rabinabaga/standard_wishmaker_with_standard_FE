@@ -30,6 +30,10 @@ export default {
         white: {
           primary: "#ffffff",
         },
+        black: {
+          light: "#262626",
+          faded: "#5F5F5F",
+        },
       },
       fontFamily: {
         bodonimodasc: ["BodoniModaSC", "serif"],

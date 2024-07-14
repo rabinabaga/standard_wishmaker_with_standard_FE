@@ -3,4 +3,5 @@ export const PATH = {
   resetPassword: "/resetPassword",
   forgotPassword: "/forgotPassword",
   login: "/login",
+  signup:"/signup"
 };
