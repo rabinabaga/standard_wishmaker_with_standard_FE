@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AuthImg from "../../assets/images/auth-image.jpeg";
 
@@ -11,14 +11,18 @@ import { getValue } from "../../utils/object";
 import { useAuthContext } from "../../hooks/contextConsumer.hook";
 import { useLoginAccount } from "../../hooks/auth.hook";
 import Button from "../../components/common/Button/Button";
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const SignUp: React.FC = () => {
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
 
+const [passwordEntered, setPasswordEntered] = useState<string>(""); 
+const methods = useForm();
+
   const handleOnClick = () => {
     () => { methods.handleSubmit(onSubmit)() }
   }
-  const methods = useForm();
   const navigate = useNavigate();
   const { errors } = methods.formState;
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -56,6 +60,8 @@ const SignUp: React.FC = () => {
       showErrorMessage(getValue(err, "message"));
     }
   };
+  console.log("password", passwordEntered);
+  
 
   return (
     <div className="flex flex-col gap-5">
@@ -78,11 +84,11 @@ const SignUp: React.FC = () => {
             <div className="flex gap-4">
               <div className="flex flex-col gap-1">
                 <CustomLabel title="First Name" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light " type="text" name="email" required={true} placeHolder="Enter your first name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light " type="text" name="firstname" required={true} placeHolder="Enter your first name" />
               </div>
               <div className="flex flex-col gap-1">
                 <CustomLabel title="Last Name" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="text" name="email" required={true} placeHolder="Enter your last name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="text" name="lastname" required={true} placeHolder="Enter your last name" />
               </div>
             </div>
             <div className="flex flex-col gap-1">
@@ -92,11 +98,11 @@ const SignUp: React.FC = () => {
             <div className="flex gap-4">
               <div className="flex flex-col gap-1">
                 <CustomLabel title="Password" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" name="email" required={true} placeHolder="Type a password" />
+                <CustomInput passwordMatch={setPasswordEntered} styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" name="password" required={true} placeHolder="Type a password" />
               </div>
               <div className="flex flex-col gap-1">
                 <CustomLabel title="Confirm Password" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="passwrord" name="email" required={true} placeHolder="Retype your password" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" passwordValue={passwordEntered} name="confirmpassword" required={true} placeHolder="Retype your password" />
               </div>
             </div>
            

@@ -31,6 +31,7 @@ const Login: React.FC = () => {
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
   const { setIsLoggedIn } = useAuthContext();
   const { errors } = methods.formState;
+  const {watch} = methods;
   // const { errors } = methods.formState;
   // const onSubmit: SubmitHandler<FieldValues> = data => console.log(data);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -67,9 +68,11 @@ const Login: React.FC = () => {
       showErrorMessage(getValue(err, "message"));
     }
   };
+  
   const handleOnClick = () => {
     () => { methods.handleSubmit(onSubmit)() }
   }
+  
 
   return (
     <div className="flex flex-col gap-5">

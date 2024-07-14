@@ -7,7 +7,9 @@ interface Props {
   placeHolder: string;
   type: string;
   required?: boolean;
-  styles: string
+  styles: string;
+  passwordMatch?: (value: string) => void;
+  passwordValue?:string
 }
 
 const CustomInput: React.FC<Props> = ({
@@ -16,14 +18,21 @@ const CustomInput: React.FC<Props> = ({
   placeHolder,
   type,
   required,
-  styles
-
+  styles,
+  passwordMatch, 
+  passwordValue
 }) => {
   const {
     register,
+    watch,
     formState: { errors },
     setValue,
   } = useFormContext();
+
+  if(name==="password" && passwordMatch){
+    const pass = watch("password");
+    passwordMatch(pass);
+  }
 
   useEffect(() => {
     if (defaultValue) {
@@ -46,14 +55,23 @@ const CustomInput: React.FC<Props> = ({
     };
   }
 
+
   return (
     <div>
-      <input
+      {(name !== "confirmpassword") ? <>  <input
         type={type}
         className={styles}
         placeholder={placeHolder}
         {...register(name, validationRules)}
-      />
+      /></> : <>  <input
+        type={type}
+        className={styles}
+        {...register("confirmpassword", {
+          required: "Confirm Password is required",
+          validate: value =>
+            value === passwordValue || "The passwords do not match"
+        })}
+      /></>}
       <div>
         {required && errors[name] && (
           <span className="text-red-500 text-sm">
