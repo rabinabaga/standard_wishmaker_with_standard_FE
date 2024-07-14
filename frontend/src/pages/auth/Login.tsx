@@ -65,6 +65,9 @@ const Login: React.FC = () => {
   //     showErrorMessage(getValue(err, "message"));
   //   }
   // };
+  const handleOnClick = ()=>{
+    () => { methods.handleSubmit(onSubmit)() }
+  }
 
   return (
     <div className="w-full flex flex-wrap  justify-center   lg:justify-between  h-screen px-6 lg:px-0 overflow-hidden">
@@ -78,7 +81,7 @@ const Login: React.FC = () => {
               <CustomInput
                 name="email"
                 placeHolder="Enter your email"
-                type="text"
+                type="email"
                 required={true}
               ></CustomInput>
               <CustomInput 
@@ -88,8 +91,7 @@ const Login: React.FC = () => {
               required={true}
               ></CustomInput>
 
-          
-              <button type="submit">Sign In</button>
+              <Button title="Sign In"  onClick={handleOnClick}></Button>
             </form>
           </FormProvider>
 
