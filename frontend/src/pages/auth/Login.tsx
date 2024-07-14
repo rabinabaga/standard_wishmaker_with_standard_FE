@@ -75,26 +75,20 @@ const Login: React.FC = () => {
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
-              <input
-                className="border-gray-200"
-                defaultValue="test"
-                {...methods.register("email")}
-              />
+              <CustomInput
+                name="email"
+                placeHolder="Enter your email"
+                type="text"
+                required={true}
+              ></CustomInput>
               <CustomInput 
-              defaultValue="testpass234"
               name="password"
               placeHolder="Enter your password"
               type="password"
               required={true}
               ></CustomInput>
 
-              {/* include validation with required or other standard HTML validation rules */}
-              {/* <input
-                className="border-gray-200"
-                {...methods.register("password", { required: true })}
-              /> */}
-              {/* errors will return when field validation fails */}
-
+          
               <button type="submit">Sign In</button>
             </form>
           </FormProvider>
