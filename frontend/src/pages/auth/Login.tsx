@@ -31,7 +31,6 @@ const Login: React.FC = () => {
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
   const { setIsLoggedIn } = useAuthContext();
   const { errors } = methods.formState;
-  const {watch} = methods;
   // const { errors } = methods.formState;
   // const onSubmit: SubmitHandler<FieldValues> = data => console.log(data);
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

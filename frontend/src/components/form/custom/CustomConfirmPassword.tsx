@@ -36,14 +36,14 @@ const ConfirmPassword: React.FC<Props> = ({ defaultValue }) => {
                     defaultValue={defaultValue}
                     className="py-4 px-2 rounded-md border border-1 border-black-light"
                     placeholder="Confirm Password"
-                    {...register("confirm_password", {
+                    {...register("confirmPassword", {
                         required: "This field is required",
                         validate: (value) => value === password || "Password do not match",
                     })}
                 />
-                {errors.confirm_password && (
+                {errors.confirmPassword && (
                     <span className="text-red-500 text-sm">
-                        {errors.confirm_password.message?.toString()}
+                        {errors.confirmPassword.message?.toString()}
                     </span>
                 )}
             </div>

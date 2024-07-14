@@ -3,7 +3,7 @@ import { post, postUser } from "../api/client";
 
 export const useCreateAccount = () =>
   useMutation({
-    mutationFn: (body: object) => post({ url: "api/v1/user/create", body }),
+    mutationFn: (body: object) => post({ url: "auth/register", body }),
   });
 
 export const useLoginAccount = () =>

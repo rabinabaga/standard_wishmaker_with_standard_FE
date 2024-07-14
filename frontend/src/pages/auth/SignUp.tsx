@@ -9,17 +9,17 @@ import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-fo
 import { showErrorMessage, showSuccessMessage } from "../../utils/toast";
 import { getValue } from "../../utils/object";
 import { useAuthContext } from "../../hooks/contextConsumer.hook";
-import { useLoginAccount } from "../../hooks/auth.hook";
+import { useCreateAccount } from "../../hooks/auth.hook";
 import Button from "../../components/common/Button/Button";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import ConfirmPassword from "../../components/form/custom/CustomConfirmPassword";
 
 const SignUp: React.FC = () => {
-  const { mutateAsync: loginAccount, isPending } = useLoginAccount();
+  const { mutateAsync: registerAccount, isPending } = useCreateAccount();
 
 const methods = useForm();
-
+  const { setIsLoggedIn } = useAuthContext();
   const handleOnClick = () => {
     () => { methods.handleSubmit(onSubmit)() }
   }
@@ -28,12 +28,15 @@ const methods = useForm();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
       const resData = {
+        firstName:data.firstName,
+        lastName:data.lastName,
+        confirmPassword:data.confirmPassword,
         email: data.email,
         password: data.password,
       };
-      const { setIsLoggedIn } = useAuthContext();
+    
 
-      const response = await loginAccount(resData);
+      const response = await registerAccount(resData);
       console.log("response", response);
 
       // const refresh = getValue(response, "refresh");
@@ -83,11 +86,11 @@ const methods = useForm();
             <div className="flex gap-4">
               <div className="flex flex-col gap-1">
                 <CustomLabel title="First Name" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light " type="text" name="firstname" required={true} placeHolder="Enter your first name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light " type="text" name="firstName" required={true} placeHolder="Enter your first name" />
               </div>
               <div className="flex flex-col gap-1">
                 <CustomLabel title="Last Name" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="text" name="lastname" required={true} placeHolder="Enter your last name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="text" name="lastName" required={true} placeHolder="Enter your last name" />
               </div>
             </div>
             <div className="flex flex-col gap-1">
