@@ -27,44 +27,45 @@ const Login: React.FC = () => {
 
   // const methods = useForm();
   const methods = useForm();
-  // const { mutateAsync: loginAccount, isPending } = useLoginAccount();
+  const { mutateAsync: loginAccount, isPending } = useLoginAccount();
   const { setIsLoggedIn } = useAuthContext();
   const { errors } = methods.formState; 
   // const { errors } = methods.formState;
-  const onSubmit: SubmitHandler<FieldValues> = data => console.log(data);
-  // const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-  //   try {
-  //     const resData = {
-  //       email: data.email,
-  //       password: data.password,
-  //     };
-  //     console.log("resData", resData);
+  // const onSubmit: SubmitHandler<FieldValues> = data => console.log(data);
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    try {
+      const resData = {
+        email: data.email,
+        password: data.password,
+      };
       
-  //     const response = await loginAccount(resData);
-  //     const refresh = getValue(response, "refresh");
-  //     const access = getValue(response, "access");
-  //     setCookie({
-  //       cookieName: AUTH_COOKIE_CONFIG.loggedInCookie,
-  //       value: "true",
-  //       expiresIn: 1,
-  //     });
-  //     setCookie({
-  //       cookieName: AUTH_COOKIE_CONFIG.ACCESS_TOKEN,
-  //       value: access,
-  //       expiresIn: 1,
-  //     });
-  //     setCookie({
-  //       cookieName: AUTH_COOKIE_CONFIG.REFRESH_TOKEN,
-  //       value: refresh,
-  //       expiresIn: 1,
-  //     });
-  //     setIsLoggedIn(true);
-  //     showSuccessMessage(getValue(response, "message"));
-  //     navigate(PATH.dashboard);
-  //   } catch (err) {
-  //     showErrorMessage(getValue(err, "message"));
-  //   }
-  // };
+      const response = await loginAccount(resData);
+      console.log("response", response);
+      
+      // const refresh = getValue(response, "refresh");
+      // const access = getValue(response, "access");
+      // setCookie({
+      //   cookieName: AUTH_COOKIE_CONFIG.loggedInCookie,
+      //   value: "true",
+      //   expiresIn: 1,
+      // });
+      // setCookie({
+      //   cookieName: AUTH_COOKIE_CONFIG.ACCESS_TOKEN,
+      //   value: access,
+      //   expiresIn: 1,
+      // });
+      // setCookie({
+      //   cookieName: AUTH_COOKIE_CONFIG.REFRESH_TOKEN,
+      //   value: refresh,
+      //   expiresIn: 1,
+      // });
+      setIsLoggedIn(true);
+      showSuccessMessage(getValue(response, "message"));
+      navigate(PATH.dashboard);
+    } catch (err) {
+      showErrorMessage(getValue(err, "message"));
+    }
+  };
   const handleOnClick = ()=>{
     () => { methods.handleSubmit(onSubmit)() }
   }

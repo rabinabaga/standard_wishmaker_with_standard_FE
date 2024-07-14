@@ -9,7 +9,7 @@ export const useCreateAccount = () =>
 export const useLoginAccount = () =>
   useMutation({
     mutationFn: (body: object) =>
-      post({ url: "api/v1/users/staff/login", body }),
+      post({ url: "auth/login", body }),
   });
 
 export const usePasswordReset = () =>

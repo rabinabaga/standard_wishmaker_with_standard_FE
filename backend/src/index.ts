@@ -6,12 +6,12 @@ import express, {
 import bodyParser from "body-parser";
 // import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-// import cors from "cors";
+import cors from "cors";
 import "dotenv/config";
 import { DB_SECRET } from "./config/config";
 
 // import logger from "./utils/logger";
-// import corsConfig from "./config/cors.config";
+import corsConfig from "./config/cors.config";
 // import { DEFAULT_APP_PORT } from "./constant/common";
 // import { DB_SECRET } from "./config/config";
 import connectToDb from "./config/mongodb.config";
@@ -40,7 +40,7 @@ const startServer = async (
     // parse application/json
     app.use(bodyParser.json());
 
-    // app.use(cors(corsConfig));
+    app.use(cors(corsConfig));
 
     // parse the cookie making it easier to work with cookies
     app.use(cookieParser());
