@@ -13,6 +13,7 @@ import { useLoginAccount } from "../../hooks/auth.hook";
 import Button from "../../components/common/Button/Button";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import ConfirmPassword from "../../components/form/custom/CustomConfirmPassword";
 
 const SignUp: React.FC = () => {
   const { mutateAsync: loginAccount, isPending } = useLoginAccount();
@@ -95,16 +96,7 @@ const methods = useForm();
               <CustomLabel title="Email" />
               <CustomInput styles="py-4 px-2 rounded-md w-full border border-1 border-black-light" type="email" name="email" required={true} placeHolder="Enter your Email" />
             </div>
-            <div className="flex gap-4">
-              <div className="flex flex-col gap-1">
-                <CustomLabel title="Password" />
-                <CustomInput passwordMatch={setPasswordEntered} styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" name="password" required={true} placeHolder="Type a password" />
-              </div>
-              <div className="flex flex-col gap-1">
-                <CustomLabel title="Confirm Password" />
-                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" passwordValue={passwordEntered} name="confirmpassword" required={true} placeHolder="Retype your password" />
-              </div>
-            </div>
+            <ConfirmPassword/>
            
             <span className=" ml-5 pl-5"> <input type="checkbox" className="mr-5 inline" />
               I agree <span className="text-primary-900 underline">Terms and Conditions </span> and <span className="text-primary-900 underline">Privacy Policy</span>
