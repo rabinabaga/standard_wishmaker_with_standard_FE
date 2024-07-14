@@ -31,7 +31,7 @@ export default {
           primary: "#ffffff",
         },
         black: {
-          light: "#262626",
+          light: "#777777",
           faded: "#5F5F5F",
         },
       },

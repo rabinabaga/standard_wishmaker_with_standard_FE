@@ -75,31 +75,45 @@ const SignUp: React.FC = () => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <div className="flex flex-col gap-5">
+            <div className="flex gap-4">
+              <div className="flex flex-col gap-1">
+                <CustomLabel title="First Name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light " type="text" name="email" required={true} placeHolder="Enter your first name" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <CustomLabel title="Last Name" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="text" name="email" required={true} placeHolder="Enter your last name" />
+              </div>
+            </div>
             <div className="flex flex-col gap-1">
               <CustomLabel title="Email" />
-              <CustomInput styles="py-4 px-2 rounded w-[492px]" type="email" name="email" required={true} placeHolder="Enter your Email" />
+              <CustomInput styles="py-4 px-2 rounded-md w-full border border-1 border-black-light" type="email" name="email" required={true} placeHolder="Enter your Email" />
             </div>
-
-            <div className="flex flex-col gap-1">
-              <CustomLabel title="Password" />
-              <CustomInput styles="py-4 px-2 rounded w-[492px]" type="password" name="password" required={true} placeHolder="Enter your Password" />
+            <div className="flex gap-4">
+              <div className="flex flex-col gap-1">
+                <CustomLabel title="Password" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="password" name="email" required={true} placeHolder="Type a password" />
+              </div>
+              <div className="flex flex-col gap-1">
+                <CustomLabel title="Confirm Password" />
+                <CustomInput styles="py-4 px-2 rounded-md border border-1 border-black-light" type="passwrord" name="email" required={true} placeHolder="Retype your password" />
+              </div>
             </div>
-
-            <p className="text-black-faded text-center">Forgot password?</p>
-            <Button title="Sign In" onClick={handleOnClick} />
+           
+            <span className=" ml-5 pl-5"> <input type="checkbox" className="mr-5 inline" />
+              I agree <span className="text-primary-900 underline">Terms and Conditions </span> and <span className="text-primary-900 underline">Privacy Policy</span>
+            </span>
+            <Button title="Sign Up" onClick={handleOnClick} />
           </div>
         </form>
 
       </FormProvider>
 
-      <p className="text-center"> Or</p>
-      <button className="w-full font-bold border border-black-faded border-2 py-3 rounded-lg">
-        Sign In With Google
-      </button>
-
+ 
       <p className="text-center">
-        <span className="text-black-faded">Don't have an account?</span>
-        <span className="text-primary-900 font-bold">Sign up now</span>
+        <span className="text-black-faded">Already have an account? </span>
+        <Link to="/login">
+          <span className="text-primary-900 font-bold">Sign In now</span></Link>
       </p>
     </div>
   );
