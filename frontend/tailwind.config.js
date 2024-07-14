@@ -13,7 +13,8 @@ export default {
           600: "#2196F3",
           700: "#1E88E5",
           800: "#1976D2",
-          900: "#1565C0",
+          900: "#cf0068",
+          faded: "rgb(207,0,104,0.4)",
         },
         secondary: {
           100: "#FCE4EC",
@@ -26,6 +27,12 @@ export default {
           800: "#C2185B",
           900: "#AD1457",
         },
+        white: {
+          primary: "#ffffff",
+        },
+      },
+      fontFamily: {
+        bodonimodasc: ["BodoniModaSC", "serif"],
       },
       fontSize: {
         xs: ".75rem",

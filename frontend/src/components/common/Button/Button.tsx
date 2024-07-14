@@ -14,12 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   styles,
 }) => {
   return (
-    <button
-      className={`w-full cursor-pointer rounded-md bg-[#6366f2] p-4 text-white transition hover:bg-opacity-90 ${styles}`}
-      onClick={onClick}
-      type='submit'
-      // disabled={disabled}
-    >
+    <button className="bg-primary-900 w-full text-white-primary py-3 rounded-lg" onClick={onClick}>
       {title}
     </button>
   );

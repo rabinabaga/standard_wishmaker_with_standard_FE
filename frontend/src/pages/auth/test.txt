@@ -1,0 +1,19 @@
+<FormProvider {...methods}>
+    <form onSubmit={methods.handleSubmit(onSubmit)}>
+        {/* register your input into the hook by invoking the "register" function */}
+        <CustomInput
+            name="email"
+            placeHolder="Enter your email"
+            type="email"
+            required={true}
+        ></CustomInput>
+        <CustomInput
+            name="password"
+            placeHolder="Enter your password"
+            type="password"
+            required={true}
+        ></CustomInput>
+
+        <Button title="Sign In" onClick={handleOnClick}></Button>
+    </form>
+</FormProvider>

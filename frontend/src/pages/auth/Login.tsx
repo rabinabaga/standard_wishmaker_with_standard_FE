@@ -70,61 +70,48 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="w-full flex flex-wrap  justify-center   lg:justify-between  h-screen px-6 lg:px-0 overflow-hidden">
-      <div className="w-full md:w-1/2 flex flex-col items-center mt-10 md:mt-20 lg:mt-32">
-        <div className="w-full lg:w-[60%] flex flex-col gap-8">
-          <h2 className="text-3xl font-bold">Welcome back! ✨</h2>
-
+      <div className="h-screen w-screen flex justify-center items-center bg-gray-100">
+        <div className="border shadow-authBox border-primary-faded border-[0.1px] flex flex-col py-[60px] px-[55px] gap-5">
+          <p
+            className="font-bodonimodasc text-primary-900 text-center"
+            style={{ fontSize: "32px" }}
+          >
+            WishMaker
+          </p>
+          <p
+            style={{ fontSize: "31px" }}
+            className="font-bold py-15 text-center"
+          >
+            Sign In
+          </p>
+   
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              {/* register your input into the hook by invoking the "register" function */}
-              <CustomInput
-                name="email"
-                placeHolder="Enter your email"
-                type="email"
-                required={true}
-              ></CustomInput>
-              <CustomInput 
-              name="password"
-              placeHolder="Enter your password"
-              type="password"
-              required={true}
-              ></CustomInput>
+            <div className="flex flex-col gap-5">
+              <CustomInput label="Email" type="email" name="email" required={true} placeHolder="Enter your Email"></CustomInput>
+              <CustomInput label="Password" type="password" name="password" required={true} placeHolder="Enter your Password"></CustomInput>
+              <p className="text-black-faded text-center">Forgot password?</p>
+              <Button title="Sign In" onClick={handleOnClick}>
 
-              <Button title="Sign In"  onClick={handleOnClick}></Button>
+              </Button>
+              </div>
             </form>
+
           </FormProvider>
+    
+          <p className="text-center"> Or</p>
+          <button className="w-full font-bold border border-black-faded border-2 py-3 rounded-lg">
+            Sign In With Google
+          </button>
 
+          <p className="text-center">
+            <span className="text-black-faded">Doesn't have an account?</span>{" "}
+            <span className="text-primary-base font-bold">Sign up now</span>
+          </p>
 
-          <div className="border-t border-gray-500 pt-4">
-            {/* <p className="text-gray-500 font-light text-sm">
-              New to Hye?
-              <Link
-                to={PATH.signUp}
-                className="pl-2 text-[#6366f1] hover:underline"
-              >
-                Create an account
-              </Link>
-            </p> */}
-
-            <div className="pt-1">
-              <p className="text-gray-500 font-light text-sm">
-                <Link
-                  to={PATH.forgotPassword}
-                  className="pl-2 text-[#6366f1] hover:underline"
-                >
-                  Forgot Password?
-                </Link>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div className="hidden lg:block w-1/2 ">
-        <img src={AuthImg} alt="Authentication" className="h-full" />
-      </div>
-    </div>
   );
 };
 
