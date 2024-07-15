@@ -33,6 +33,7 @@ export default {
         black: {
           light: "#777777",
           faded: "#5F5F5F",
+          200:"#1A202C"
         },
         purple: {
           300: "#9747FF",

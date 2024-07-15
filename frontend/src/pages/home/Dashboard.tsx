@@ -33,7 +33,7 @@ const [showMenuMobile, setShowMenuMobile] = useState(false);
         </div>
           {/* <!-- Mobile menu --> */}
           <div
-            className={`fixed relative lg:hidden bg-gray-800 text-white py-2 ${showMenuMobile ? 'w-full' : 'w-0'
+            className={`fixed relative lg:hidden bg-black-200 text-white py-2 ${showMenuMobile ? 'w-full' : 'w-0'
               }`}
             style={{ transition: 'width 0.3s ease' }}
           > 
