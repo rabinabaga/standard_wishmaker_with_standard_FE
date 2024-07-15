@@ -34,6 +34,18 @@ export default {
           light: "#777777",
           faded: "#5F5F5F",
         },
+        purple: {
+          300: "#9747FF",
+          800: "#401E6C",
+        },
+        red: {
+          300: "#CF0068",
+          800: "#690035",
+        },
+        yellow: {
+          300: "#F5E235",
+          800: "#8F841F",
+        },
       },
       fontFamily: {
         bodonimodasc: ["BodoniModaSC", "serif"],
